@@ -1,8 +1,17 @@
-<ion-view view-title="Tarefas">
+<ion-view view-title="Tarefas teste live">
   <ion-content>
-    <ion-list>
+    <ion-refresher
+    pulling-text="Atualizar tarefas..."
+    on-refresh="vm.loadTasks()">
+  </ion-refresher>
+    <ion-list can-swipe="true">
       <ion-item ng-repeat="task in vm.taskList" href="#/app/detailTask/{{task._id}}">
         {{task.name}}
+
+        <ion-option-button class="button-info"
+                       ng-click="vm.removeTask(task)">
+                       Apagar
+      </ion-option-button>
       </ion-item>
     </ion-list>
   </ion-content>
