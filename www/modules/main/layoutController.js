@@ -1,19 +1,14 @@
-var module = angular.module('starter');
+function LayoutController ($scope, $ionicModal, $timeout) {
 
-
-function LayoutController($scope, $ionicModal, $timeout) {
-
-  // Form data for the login modal
   $scope.loginData = {};
 
-  // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('modules/main/loginModalView.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
-  // Triggered in the login modal to close it
+
   $scope.closeLogin = function() {
     $scope.modal.hide();
   };
@@ -35,18 +30,17 @@ function LayoutController($scope, $ionicModal, $timeout) {
   };
 }
 
-LayoutController.$inject = ['$scope', '$ionicModal', '$timeout']
+LayoutController.$inject = ['$scope', '$ionicModal', '$timeout'];
 
-module
-.controller('layoutController', LayoutController);
-
-module.config(function($stateProvider, $urlRouterProvider) {
+angular.module('starter')
+.controller('layoutController', LayoutController)
+.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
     .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'modules/main/layoutView.html',
     controller: 'layoutController'
   })
+
 });

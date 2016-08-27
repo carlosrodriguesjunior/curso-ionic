@@ -1,7 +1,7 @@
 {
-  "name": "ionic-curso",
+  "name": "curso",
   "version": "1.1.1",
-  "description": "ionic-curso: An Ionic project",
+  "description": "curso: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -23,6 +23,7 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios",
+    "android"
   ]
 }

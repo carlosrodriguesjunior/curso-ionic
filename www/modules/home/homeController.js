@@ -1,30 +1,34 @@
-var module = angular.module('starter');
+function HomeController( todoService, $scope) {
 
-function HomeController($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-};
-
-HomeController.$inject = ["$scope"];
-
-module.controller('homeController', HomeController);
+this.taskList= [];
+var vm = this;
 
 
-module.config(function($stateProvider, $urlRouterProvider) {
+$scope.$on("$ionicView.beforeEnter", function(event, data){
+  todoService.getTodo()
+  .then(function(result){
+   vm.taskList = result.data;
+  })
+  .catch(function(error){
+  console.log(error);
+  });
+});
+
+}
+
+HomeController.$inject = ['todoService','$scope'];
+
+angular.module('starter')
+.controller('homeController', HomeController)
+.config(function($stateProvider){
+
   $stateProvider
-
   .state('app.playlists', {
     url: '/playlists',
     views: {
       'menuContent': {
         templateUrl: 'modules/home/homeView.html',
-        controller: 'homeController'
+        controller: 'homeController as vm'
       }
     }
   })
