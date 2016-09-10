@@ -1,3 +1,5 @@
+(function() {
+
 function DetailTaskController($state, todoService) {
 
 var vm  = this;
@@ -29,3 +31,4 @@ angular.module('starter')
     }
   })
 });
+}());

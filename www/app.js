@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic', 'ngCordova']);
 
 var start = function () {
   angular.bootstrap(document,['starter']);
